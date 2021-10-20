@@ -1,4 +1,5 @@
 // 704. Binary Search
+// find a target in O(log(n))
 class Solution {
     public int search(int[] nums, int target) {
         int left = 0;
