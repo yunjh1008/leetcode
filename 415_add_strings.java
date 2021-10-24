@@ -1,4 +1,6 @@
 // 415. Add Strings
+// You must solve the problem without using any built-in library for handling large integers (such as BigInteger).
+// You must also not convert the inputs to integers directly.
 class Solution {
     public String addStrings(String num1, String num2) {
         StringBuilder result = new StringBuilder();
