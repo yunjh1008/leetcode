@@ -1,4 +1,3 @@
-// 21. Merge Two Sorted Lists
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -13,6 +12,7 @@ class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         // Prev. (fake) head node b/c need to store head node
         ListNode prevHead = new ListNode(-101);
+        // prevHead.next = head of mergedList
         ListNode mergedList = prevHead;
         
         while(l1 != null && l2 != null) {
@@ -28,11 +28,13 @@ class Solution {
             mergedList = mergedList.next;
         }
         
-        // append remaining nodes
-        if(l1 == null)
-            mergedList.next = l2;
-        else if(l2 == null)
+        // append remaining nodes at the last of merged list
+        if(l1 != null) {
             mergedList.next = l1;
+        }
+        else if(l2 != null) {
+            mergedList.next = l2;
+        }
         
         return prevHead.next;
     }
