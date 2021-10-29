@@ -45,7 +45,6 @@ class Solution {
                     stack.push(i);
                 }
                 else {
-                    System.out.println("i = " + i + ", stack.peek() = " + stack.peek());
                     maxLen = Math.max(maxLen, i - stack.peek());
                 }
             }
