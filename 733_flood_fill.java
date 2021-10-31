@@ -1,10 +1,10 @@
 // 733. Flood Fill
 class Solution {
-    class Coordinates {
+    class Node {
         public int r;
         public int c;
         
-        public Coordinates(int r, int c) {
+        public Node(int r, int c) {
             this.r = r;
             this.c = c;
         }
@@ -17,30 +17,30 @@ class Solution {
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
         int row = image.length;
         int col = image[0].length;
-        boolean[][] isVisited = new boolean[row][col];
-        Queue<Coordinates> queue = new LinkedList<>();
+        boolean[][] visit = new boolean[row][col];
+        Queue<Node> queue = new LinkedList<>();
         
-        int originalColor = image[sr][sc];
+        int oldColor = image[sr][sc];
         image[sr][sc] = newColor;
-        isVisited[sr][sc] = true;
-        Coordinates item = new Coordinates(sr, sc);
-        queue.add(item);
+        visit[sr][sc] = true;
+        Node node = new Node(sr, sc);
+        queue.add(node);
         
         while(!queue.isEmpty()) {
-            Coordinates current = queue.poll();
-            int currentR = current.r;
-            int currentC = current.c;
+            Node current = queue.poll();
+            int r = current.r;
+            int c = current.c;
             
             for(int i = 0; i < 4; i++) {
-                int nextR = currentR + rDirection[i];
-                int nextC = currentC + cDirection[i];
+                int nextR = r + rDirection[i];
+                int nextC = c + cDirection[i];
                 
-                if(nextR >= 0 && nextR < row && nextC >= 0 && nextC < col 
-                   && image[nextR][nextC] == originalColor && !isVisited[nextR][nextC]) {
-                    Coordinates newItem = new Coordinates(nextR, nextC);
+                if(nextR >= 0 && nextR < row && nextC >= 0 && nextC < col
+                   && image[nextR][nextC] == oldColor && !visit[nextR][nextC]) {
+                    Node nextNode = new Node(nextR, nextC);
                     image[nextR][nextC] = newColor;
-                    isVisited[nextR][nextC] = true;
-                    queue.add(newItem);
+                    visit[nextR][nextC] = true;
+                    queue.add(nextNode);
                 }
             }
         }
