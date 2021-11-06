@@ -36,9 +36,11 @@ class Solution {
                     start = pivot + 1;
                 }
             }
+            // search left side
             else if(nums[pivot] > target) {
                 end = pivot - 1;
             }
+            // search right side
             else {
                 start = pivot + 1;
             }
